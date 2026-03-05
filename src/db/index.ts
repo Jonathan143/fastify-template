@@ -10,7 +10,10 @@ export type DatabaseConnections = {
   mongo?: MongoClient;
 };
 
-export async function connectDatabase(env: AppEnv, logger: FastifyBaseLogger): Promise<DatabaseConnections> {
+export async function connectDatabase(
+  env: AppEnv,
+  logger: FastifyBaseLogger
+): Promise<DatabaseConnections> {
   if (env.dbType === 'none') {
     logger.info('Database connection disabled (DB_TYPE=none)');
     return { type: 'none' };
@@ -20,7 +23,7 @@ export async function connectDatabase(env: AppEnv, logger: FastifyBaseLogger): P
     const pool = mysql.createPool({
       uri: env.mysqlUri,
       waitForConnections: true,
-      connectionLimit: 10
+      connectionLimit: 10,
     });
 
     await pool.query('SELECT 1');

@@ -6,6 +6,6 @@ export default fp(async (fastify) => {
 
   await fastify.register(cors, {
     origin: origins === '*' ? true : origins,
-    credentials: true
+    credentials: true,
   });
 });

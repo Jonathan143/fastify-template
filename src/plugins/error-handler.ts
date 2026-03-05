@@ -17,10 +17,10 @@ export default fp(async (fastify) => {
         error: {
           code: error.code,
           message: error.message,
-          details: error.details
+          details: error.details,
         },
         requestId: request.id,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -30,10 +30,10 @@ export default fp(async (fastify) => {
         error: {
           code: 'VALIDATION_ERROR',
           message: 'Request validation failed',
-          details: maybeError.validation
+          details: maybeError.validation,
         },
         requestId: request.id,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -43,10 +43,11 @@ export default fp(async (fastify) => {
       success: false,
       error: {
         code: statusCode >= 500 ? 'INTERNAL_SERVER_ERROR' : 'REQUEST_ERROR',
-        message: statusCode >= 500 ? 'Internal server error' : maybeError.message ?? 'Request error'
+        message:
+          statusCode >= 500 ? 'Internal server error' : (maybeError.message ?? 'Request error'),
       },
       requestId: request.id,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   });
 });

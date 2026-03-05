@@ -14,7 +14,7 @@ const envSchema = z.object({
   MYSQL_URI: z.string().optional(),
   MONGO_URI: z.string().optional(),
   DEMO_USER: z.string().default('admin'),
-  DEMO_PASSWORD: z.string().default('admin123')
+  DEMO_PASSWORD: z.string().default('admin123'),
 });
 
 const rawEnv = envSchema.parse(process.env);
@@ -59,5 +59,5 @@ export const env: AppEnv = {
   mysqlUri: rawEnv.MYSQL_URI,
   mongoUri: rawEnv.MONGO_URI,
   demoUser: rawEnv.DEMO_USER,
-  demoPassword: rawEnv.DEMO_PASSWORD
+  demoPassword: rawEnv.DEMO_PASSWORD,
 };

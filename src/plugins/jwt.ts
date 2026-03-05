@@ -4,7 +4,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 
 export default fp(async (fastify) => {
   await fastify.register(jwt, {
-    secret: fastify.config.jwtSecret
+    secret: fastify.config.jwtSecret,
   });
 
   fastify.decorate('authenticate', async (request: FastifyRequest, reply: FastifyReply) => {
@@ -15,10 +15,10 @@ export default fp(async (fastify) => {
         success: false,
         error: {
           code: 'UNAUTHORIZED',
-          message: 'Invalid or expired token'
+          message: 'Invalid or expired token',
         },
         requestId: request.id,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
   });

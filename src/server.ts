@@ -6,7 +6,7 @@ async function start() {
   try {
     await app.listen({
       host: app.config.host,
-      port: app.config.port
+      port: app.config.port,
     });
 
     app.log.info(`Server started at http://${app.config.host}:${app.config.port}`);

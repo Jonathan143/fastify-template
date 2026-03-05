@@ -7,7 +7,7 @@ export default fp(async (fastify) => {
         method: request.method,
         url: request.url,
         statusCode: reply.statusCode,
-        responseTime: reply.elapsedTime
+        responseTime: reply.elapsedTime,
       },
       'Request completed'
     );
