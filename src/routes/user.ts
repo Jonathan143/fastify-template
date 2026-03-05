@@ -8,10 +8,7 @@ const userRoutes: FastifyPluginAsync = async (fastify) => {
     },
     async (request) => {
       return {
-        success: true,
-        data: {
-          user: request.user,
-        },
+        user: request.user,
       };
     }
   );
@@ -35,12 +32,9 @@ const userRoutes: FastifyPluginAsync = async (fastify) => {
       const { page = 1, pageSize = 10 } = request.query as { page?: number; pageSize?: number };
 
       return {
-        success: true,
-        data: {
-          page,
-          pageSize,
-          items: [],
-        },
+        page,
+        pageSize,
+        items: [],
       };
     }
   );

@@ -7,6 +7,7 @@ import errorHandlerPlugin from './plugins/error-handler';
 import jwtPlugin from './plugins/jwt';
 import loggerPlugin from './plugins/logger';
 import multipartPlugin from './plugins/multipart';
+import responseEnvelopePlugin from './plugins/response-envelope';
 import staticPlugin from './plugins/static';
 import apiRoutes from './routes';
 
@@ -36,6 +37,7 @@ export async function buildApp() {
   await app.register(databasePlugin);
   await app.register(loggerPlugin);
   await app.register(errorHandlerPlugin);
+  await app.register(responseEnvelopePlugin);
 
   await app.register(apiRoutes, { prefix: '/api' });
 

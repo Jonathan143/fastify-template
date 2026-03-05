@@ -20,20 +20,19 @@ const healthRoutes: FastifyPluginAsync = async (fastify) => {
                 },
                 required: ['status', 'uptime', 'timestamp'],
               },
+              timestamp: { type: 'string' },
+              reqId: { type: 'string' },
             },
-            required: ['success', 'data'],
+            required: ['success', 'data', 'timestamp', 'reqId'],
           },
         },
       },
     },
     async () => {
       return {
-        success: true,
-        data: {
-          status: 'ok',
-          uptime: process.uptime(),
-          timestamp: new Date().toISOString(),
-        },
+        status: 'ok',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString(),
       };
     }
   );

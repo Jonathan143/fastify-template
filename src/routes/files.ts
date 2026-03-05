@@ -29,13 +29,10 @@ const fileRoutes: FastifyPluginAsync = async (fastify) => {
       await pipeline(part.file, createWriteStream(targetPath));
 
       return {
-        success: true,
-        data: {
-          filename: safeName,
-          mimeType: part.mimetype,
-          encoding: part.encoding,
-          url: `/api/files/download/${encodeURIComponent(safeName)}`,
-        },
+        filename: safeName,
+        mimeType: part.mimetype,
+        encoding: part.encoding,
+        url: `/api/files/download/${encodeURIComponent(safeName)}`,
       };
     }
   );

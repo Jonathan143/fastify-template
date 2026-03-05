@@ -31,12 +31,9 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
       );
 
       return {
-        success: true,
-        data: {
-          token,
-          tokenType: 'Bearer',
-          expiresIn: fastify.config.jwtExpiresIn,
-        },
+        token,
+        tokenType: 'Bearer',
+        expiresIn: fastify.config.jwtExpiresIn,
       };
     }
   );
